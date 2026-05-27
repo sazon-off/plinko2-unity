@@ -1,0 +1,503 @@
+.game-controls-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-controls {
+    position: absolute;
+    width: 80vh;
+    height: 25vh;
+    pointer-events: none;
+}
+
+/* Section Layout */
+.control-section {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: all;
+}
+
+.buy-features {
+    left: 15vh;
+    top: 5vh;
+}
+
+.bet-amount {
+    right: 13vh;
+    top: 5vh;
+}
+
+.balls-amount {
+    left: 13vh;
+    bottom: 5vh;
+}
+
+.auto-amount {
+    right: 15vh;
+    bottom: 5vh;
+}
+
+/* Section Titles - Common */
+.section-title {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 0.2vh 2vh;
+    position: relative;
+}
+
+.section-title span {
+    font-size: 1.4vh;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
+}
+
+/* BET AMOUNT - золотой цвет с bet-trigger фоном */
+.bet-amount .section-title {
+    background-image: url('/assets/images/bet-trigger/title_bg.png_100.webp');
+    left: -4vh;
+}
+
+.bet-amount .section-title span {
+    color: #ffd700;
+    text-shadow: 0 0 0.5vh rgba(255, 215, 0, 0.8);
+}
+
+/* BALLS AMOUNT - фиолетовый неон */
+.balls-amount .section-title {
+    background-image: url('/assets/images/bet-trigger/title_bg.png_100.webp');
+    left: 2vh;
+}
+
+.balls-amount .section-title span {
+    color: #c084fc;
+    text-shadow: 0 0 0.5vh rgba(192, 132, 252, 0.8), 0 0 1vh rgba(168, 85, 247, 0.6);
+}
+
+/* BUY FEATURES - фиолетовый неон */
+.buy-features .section-title {
+    background-image: url('/assets/images/bet-trigger/title_bg.png_100.webp');
+    left: 2vh;
+}
+
+.buy-features .section-title span {
+    color: #c084fc;
+    text-shadow: 0 0 0.5vh rgba(192, 132, 252, 0.8), 0 0 1vh rgba(168, 85, 247, 0.6);
+}
+
+/* AUTO - голубой/циановый неон с autoplay фоном */
+.auto-amount .section-title {
+    background-image: url('/assets/images/bet-trigger/title_bg.png_100.webp');
+    left: -4vh;
+}
+
+.auto-amount .section-title span {
+    color: #22d3ee;
+    text-shadow: 0 0 0.5vh rgba(34, 211, 238, 0.8), 0 0 1vh rgba(6, 182, 212, 0.6);
+}
+
+/* Buy Features Buttons */
+.features-buttons {
+    display: flex;
+    gap: 1.6vh;
+    align-items: center;
+    position: relative;
+    padding: 1vh 1.7vh;
+}
+
+.features-buttons::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/left_bg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.features-buttons::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/right_bg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.feature-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    width: 2.5vh;
+    height: 2.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.feature-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 0.5vh rgba(255, 255, 255, 0.5));
+}
+
+.feature-btn:hover {
+    transform: scale(1.1);
+}
+
+.feature-btn:active {
+    transform: scale(0.95);
+}
+
+/* Control Input */
+.control-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5vh;
+    position: relative;
+    padding: 1vh 0.8vh;
+}
+
+/* Bet Amount - использует bet-trigger ассеты */
+.bet-amount .control-input::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/bet-trigger/left_bg_active.png_80_90.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.bet-amount .control-input::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/bet-trigger/right_bg_active.png_80_90.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* Balls Amount - использует bet-trigger ассеты */
+.balls-amount .control-input::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/left_bg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.balls-amount .control-input::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/right_bg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* Auto Amount - использует autoplay ассеты */
+.auto-amount .control-input::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/autoplay/left_bg_active.png_80_90.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.auto-amount .control-input::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10vh;
+    background-image: url('/assets/images/autoplay/right_bg_active.png_80_90.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.control-arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 2.5vh;
+    height: 2.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    z-index: 1;
+}
+
+.control-arrow img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.control-arrow:hover {
+    transform: scale(1.15);
+}
+
+.control-arrow:active {
+    transform: scale(0.9);
+}
+
+/* Control Value */
+.control-value {
+    position: relative;
+    padding: 0 2vh;
+    min-width: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.control-value span {
+    color: white;
+    font-size: 2vh;
+    font-weight: bold;
+    text-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-aspect-ratio: 6.6/10) {
+
+    .game-controls-wrapper {
+        margin-top: 2vw;
+    }
+
+    .game-controls {
+        width: 70vw;
+        height: 30vw;
+    }
+
+    .buy-features {
+        left: -8vw;
+        top: 0vw;
+    }
+
+    .bet-amount {
+        right: -8vw;
+        top: 0vw;
+    }
+
+    .balls-amount {
+        left: -8vw;
+        bottom: 0vw;
+    }
+
+    .auto-amount {
+        right: -8vw;
+        bottom: 0vw;
+    }
+
+    .section-title {
+        padding: 1vw 3vw;
+    }
+
+    .section-title span {
+        font-size: 2.2vw;
+    }
+
+    .features-buttons {
+        gap: 4vw;
+        padding: 1.5vw 1.2vw;
+    }
+
+    .features-buttons::before {
+        width: 15vw;
+    }
+
+    .features-buttons::after {
+        width: 15vw;
+    }
+
+    .feature-btn {
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .control-input {
+        gap: 0.8vw;
+        padding: 1.5vw 1.2vw;
+    }
+
+    .control-input::before {
+        width: 6vw;
+    }
+
+    .control-input::after {
+        width: 6vw;
+    }
+
+    .control-arrow {
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .control-value {
+        padding: 0 3vw;
+        min-width: 12vw;
+    }
+
+    .control-value span {
+        font-size: 3vw;
+    }
+}
+
+
+
+/* Play Button Styles */
+#drop-button {
+    user-select: none;
+    margin-top: 3vh;
+    cursor: pointer;
+    background: transparent;
+    border: 0.6vh solid #f3f185;
+    color: white;
+    font-weight: bold;
+    font-size: 3vh;
+    padding: 4.3vh 2vh;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: #f3f18542 0px 7px 29px 0px;
+    transition: all 0.3s;
+}
+
+#drop-button::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    background-image: linear-gradient(#ffb901 50%, #ff9d02 50%);
+    background-size: 10px 10px;
+    animation: buttonAnimation 0.3s linear infinite;
+    z-index: -1;
+}
+
+#drop-button:hover {
+    opacity: .8;
+}
+
+#drop-button:disabled {
+    opacity: .5;
+}
+
+.penta {
+    position: absolute;
+    top: -3%;
+    left: -21%;
+    width: 18vh;
+    animation: 4s rotate infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+
+.pentaN {
+    top: -3%;
+    left: -21%;
+    width: 18vh;
+    rotate: 60deg;
+    position: absolute;
+    animation: 8s rotate2 infinite linear;
+}
+
+@keyframes rotate2 {
+    0% {
+        rotate: 60deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@keyframes buttonAnimation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 10px 10px;
+    }
+}
+
+/* Mobile adjustments for play button */
+@media (max-aspect-ratio: 6.6/10) {
+    #drop-button {
+        margin-top: 3vw;
+        border: 1.5vw solid #f3f185;
+        font-size: 7vw;
+        padding: 8vw 4vw;
+    }
+
+    #drop-button::after {
+        background-size: 10px 10px;
+    }
+
+    .penta {
+        top: -14%;
+        left: -21%;
+        width: 41vw;
+    }
+
+    .pentaN {
+        top: -10%;
+        left: -10%;
+        width: 38vw;
+    }
+}

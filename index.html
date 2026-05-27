@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate">
+    <title>Plinko2</title>
+    <script type="text/javascript" src="mraid.js"></script>
+    <script>
+      window.ANDROID_STORE_URL = 'https://play.google.com/store/apps/details?id=com.plinko2.playable';
+      window.IOS_STORE_URL = 'https://apps.apple.com/app/id0000000000';
+      window.STORE_URL = window.ANDROID_STORE_URL;
+
+      (function waitForMraidReady() {
+        window.playableMraidReady = false;
+
+        function handleMraidReady() {
+          window.playableMraidReady = true;
+          window.dispatchEvent(new CustomEvent('playableMraidReady'));
+        }
+
+        if (typeof mraid === 'undefined' || !mraid || typeof mraid.getState !== 'function') {
+          handleMraidReady();
+          return;
+        }
+
+        if (mraid.getState() === 'loading' && typeof mraid.addEventListener === 'function') {
+          mraid.addEventListener('ready', handleMraidReady);
+          return;
+        }
+
+        handleMraidReady();
+      })();
+
+      window.playableOpenStoreUrl = function playableOpenStoreUrl(url) {
+        if (!url) {
+          return false;
+        }
+
+        if (typeof mraid !== 'undefined' && mraid && typeof mraid.open === 'function') {
+          mraid.open(url);
+          return true;
+        }
+
+        window.open(url, '_blank');
+        return true;
+      };
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
