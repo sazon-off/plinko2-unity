@@ -7,9 +7,23 @@
     <title>Plinko2</title>
     <script type="text/javascript" src="mraid.js"></script>
     <script>
-      window.ANDROID_STORE_URL = 'https://play.google.com/store/apps/details?id=com.plinko2.playable';
-      window.IOS_STORE_URL = 'https://apps.apple.com/app/id0000000000';
       window.STORE_URL = '';
+      window.ANDROID_STORE_URL = window.STORE_URL;
+      window.IOS_STORE_URL = window.STORE_URL;
+
+      window.INITIAL_BALANCE = 25;
+      window.BET_AMOUNT = 5;
+      window.TARGET_BALANCE = 200;
+      window.CURRENCY = 'EUR';
+      window.PLAY_BUTTON_TEXT = 'Play';
+      window.WELCOME_TEXT = 'Welcome Bonus';
+      window.WELCOME_TEXT_2 = '';
+      window.RECEIVE_BUTTON_TEXT = 'RECEIVE';
+
+      window.FINAL_TITLE_TEXT = 'Congratulations!';
+      window.FINAL_TEXT = 'YOU WON';
+      window.FREE_SPINS_TEXT = '+ 250 free spins';
+      window.INSTALL_BUTTON_TEXT = 'INSTALL';
 
       window.getPlayableStoreUrl = function getPlayableStoreUrl() {
         var userAgent = navigator.userAgent || '';

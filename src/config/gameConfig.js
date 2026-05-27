@@ -1,21 +1,37 @@
+const runtimeConfig = typeof window !== 'undefined'
+    ? window
+    : typeof globalThis !== 'undefined'
+        ? globalThis
+        : {};
+
+const readNumber = (key, fallback) => {
+    const value = Number(runtimeConfig?.[key]);
+    return Number.isFinite(value) ? value : fallback;
+};
+
+const readString = (key, fallback) => {
+    const value = runtimeConfig?.[key];
+    return typeof value === 'string' ? value : fallback;
+};
+
 export const GAME_CONFIG = {
-    defaultBalance: 25,
-    defaultBet: 5,
-    currency: '€',
-    targetBalance: 200,
-    spinButtonLabel: 'PLAY',
+    defaultBalance: readNumber('INITIAL_BALANCE', 25),
+    defaultBet: readNumber('BET_AMOUNT', 5),
+    currency: readString('CURRENCY', 'EUR'),
+    targetBalance: readNumber('TARGET_BALANCE', 200),
+    spinButtonLabel: readString('PLAY_BUTTON_TEXT', 'Play'),
     ballDropIndices: [1, 2, 3, 7, 10], // Indices where balls will fall
     welcomeModal: {
-        title: 'Welcome Bonus',
-        subTitle: '',
-        actionLabel: 'RECEIVE',
+        title: readString('WELCOME_TEXT', 'Welcome Bonus'),
+        subTitle: readString('WELCOME_TEXT_2', ''),
+        actionLabel: readString('RECEIVE_BUTTON_TEXT', 'RECEIVE'),
         amountTemplate: '{amount} {currency}',
     },
     finalModal: {
-        title: 'Congratulations!',
-        subTitle: 'YOU WON',
-        freeSpins: '+ 250 free spins',
-        installLabel: 'INSTALL',
+        title: readString('FINAL_TITLE_TEXT', 'Congratulations!'),
+        subTitle: readString('FINAL_TEXT', 'YOU WON'),
+        freeSpins: readString('FREE_SPINS_TEXT', '+ 250 free spins'),
+        installLabel: readString('INSTALL_BUTTON_TEXT', 'INSTALL'),
     },
 };
 
@@ -84,4 +100,3 @@ export function calculateMultipliers() {
 
     return multipliers;
 }
-
