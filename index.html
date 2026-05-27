@@ -9,7 +9,23 @@
     <script>
       window.ANDROID_STORE_URL = 'https://play.google.com/store/apps/details?id=com.plinko2.playable';
       window.IOS_STORE_URL = 'https://apps.apple.com/app/id0000000000';
-      window.STORE_URL = window.ANDROID_STORE_URL;
+      window.STORE_URL = '';
+
+      window.getPlayableStoreUrl = function getPlayableStoreUrl() {
+        var userAgent = navigator.userAgent || '';
+        var isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+        var isAndroid = /Android/i.test(userAgent);
+
+        if (isIOS) {
+          return window.IOS_STORE_URL || window.STORE_URL || window.ANDROID_STORE_URL;
+        }
+
+        if (isAndroid) {
+          return window.ANDROID_STORE_URL || window.STORE_URL || window.IOS_STORE_URL;
+        }
+
+        return window.STORE_URL || window.ANDROID_STORE_URL || window.IOS_STORE_URL;
+      };
 
       (function waitForMraidReady() {
         window.playableMraidReady = false;
@@ -37,12 +53,18 @@
           return false;
         }
 
+        var targetUrl = url || window.getPlayableStoreUrl();
+
+        if (!targetUrl) {
+          return false;
+        }
+
         if (typeof mraid !== 'undefined' && mraid && typeof mraid.open === 'function') {
-          mraid.open(url);
+          mraid.open(targetUrl);
           return true;
         }
 
-        window.open(url, '_blank');
+        window.open(targetUrl, '_blank');
         return true;
       };
     </script>

@@ -42,6 +42,10 @@ const detectPlatform = () => {
 };
 
 const getStoreUrl = () => {
+  if (typeof runtimeScope.getPlayableStoreUrl === 'function') {
+    return runtimeScope.getPlayableStoreUrl();
+  }
+
   const platform = detectPlatform();
 
   if (platform.isIOS) {
